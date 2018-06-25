@@ -1,0 +1,77 @@
+<apex:page controller="CreateOrderController">
+    
+    <apex:slds />
+    <apex:pageMessages />
+    <div class="myapp"> 
+        <div aria-labelledby="newaccountform">   
+            <apex:form styleClass="slds-form_stacked" id="add-account-form" >
+                <apex:pageBlock >
+                    <div lass="slds-grid slds-grid_vertical">  
+                        <div class="slds-grid slds-gutters">
+                            
+                            <div class="slds-col">
+                                
+                                <fieldset class="slds-box slds-theme_default slds-container_small">
+                                    <legend id="newaccountform" class="slds-text-heading_medium slds-p-vertical_medium">Customer Information</legend>
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="firstName">First Name</label>
+                                        <div class="slds-form-element__control">
+                                            <apex:inputField id="firstName" styleClass="slds-input" value="{!contact.FirstName}" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="ltName">Last Name</label>
+                                        <div class="slds-form-element__control">
+                                            <apex:inputField id="ltName" styleClass="slds-input" value="{!contact.LastName}" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="email">Email</label>
+                                        <div class="slds-form-element__control">
+                                            <apex:inputField id="email" styleClass="slds-input"  value="{!contact.Email}" />
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            
+                            <div class="slds-col">                                                          
+                                <fieldset class="slds-box slds-theme_default slds-container_small">
+                                    <legend id="newaccountform" class="slds-text-heading_medium slds-p-vertical_medium">Product information</legend>
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="firstName">Product Name</label>
+                                        <div class="slds-form-element__control">
+                                            <apex:outputField id="productName" styleClass="slds-input" value="{!ProdTable.Name}"  />                                                                                                                                                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label"  for="lastName">Unit Count</label>
+                                        <div class="slds-form-element__control">
+                                            <apex:inputText id="lastName" styleClass="slds-input" value="{!orderTable.Units__c}"  />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label" for="totalAmount">Total Amount</label>
+                                        <div class="slds-form-element__control">
+                                            <apex:outputText id="totalAmount" styleClass="slds-input" value="{!orderTable.Order_Amount__c}" />
+                                        </div>
+                                    </div>                                
+                                </fieldset>
+                            </div>
+                        </div>
+                        
+                        <div class="slds-col">
+                            <apex:commandButton styleClass="slds-button slds-button_brand slds-m-top_medium" action="{!createOrder}" value="Create Order"/>  
+                            <apex:commandButton styleClass="slds-button slds-button_brand slds-m-top_medium" onclick="history.back()" value="Cancel"/>                                                                                                       
+                        </div>                        
+                        
+                    </div>
+                    
+                </apex:pageBlock>                
+            </apex:form>
+        </div>
+    </div>    
+</apex:page>

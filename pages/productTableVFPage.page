@@ -1,0 +1,40 @@
+<apex:page controller="FirstVFpageController"  showHeader="false" applyHtmlTag="true"  lightningStyleSheets="true">
+
+    <apex:slds />
+    <apex:form >         
+        <apex:pageBlock title="Product List" >                                                       
+            <apex:pageBlockTable value="{!list_prodTable }" var="p" >                 
+                
+                <apex:column headerValue="Image" width="100" >
+                    <img src="{! p.Image_Url__c }" height="200" width="100" />
+                </apex:column>
+                
+                <apex:column headerValue="" >
+                    <a href="/apex/ProductsDescriptionVFPage?id={!p.Id}"  >{! p.Name }</a>
+                </apex:column>
+                
+                <apex:column width="300" headerValue="Title" value="{! p.Title__c }"/> 
+                
+                <apex:column headerValue="Description"  >
+                    <apex:outputText value="{!left(p.Product_Description__c ,100)}"></apex:outputText> 
+                    {!IF((len(p.Product_Description__c)>100),'...','')}                    
+                    
+                    <a href="/apex/ProductsDescriptionVFPage?id={!p.Id}">More</a>
+                    <apex:commandLink rendered="{!IF((len(p.Product_Description__c)>100),'true','false')}" > </apex:commandLink>    
+                </apex:column> 
+                
+                <apex:column headerValue="Cost" value="{! p.Unit_Price__c }"/>
+                
+                <apex:column >
+                    <div >
+                        <apex:outputPanel >
+                            
+                            <apex:commandButton styleClass="slds-button slds-button--brand " value="Buy" onclick="window.location.href='/apex/FormBuyProductsVFPage?id={!p.Id}'; return false; "/>
+                            
+                        </apex:outputPanel>
+                    </div>                    
+                </apex:column>               
+            </apex:pageBlockTable>                    
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>

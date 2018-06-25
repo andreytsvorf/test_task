@@ -1,0 +1,31 @@
+<apex:page controller="myApexController"  >
+    
+    <style>
+        .requiredInput{
+        display: inline-block;
+        }        
+    </style>
+    
+    <apex:form >                                                              
+        <apex:pageBlock title="Edit Page" >                                     
+            <apex:pageBlockSection >
+                
+                <apex:outputPanel layout="block" id="form">
+                    <apex:outputLabel value="Enter Pencil Box Name " for="input" />
+                    <apex:inputText value="{! pencilBoxName }" id="input" label="Enter Pencil Box Name" style="margin-right:10px" />                            
+                    <apex:commandButton action="{!updateBoxName}" value="Update Name"  />                    
+                </apex:outputPanel>
+                
+            </apex:pageBlockSection>          
+            
+            <apex:pageBlockTable value="{! list_pencil }" var="p" >                 
+                <apex:column headerValue="Color" value="{! p.Name }"/>
+                <apex:column headerValue="Box Name" value="{! p.Pencil_Box__r.Name }"/>
+                <apex:column headerValue="Created Date" value="{! p.CreatedDate }"/>
+                <apex:column headerValue="Owner" value="{! p.OwnerId }"/> 
+                
+            </apex:pageBlockTable>                    
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>
